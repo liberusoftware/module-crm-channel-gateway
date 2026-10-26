@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Liberu\CRM\ChannelGateway\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Liberu\Foundation\Organizations\Models\Team;
+use App\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,10 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 final class GatewayChannel extends Model
 {
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
+    use IsTenantModel;
 
     protected $table = 'crm_gateway_channels';
 
